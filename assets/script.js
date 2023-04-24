@@ -7,6 +7,7 @@ const selection_gejala = document.getElementById('gejala');
 const result = document.getElementById('result');
 
 const pilihan = new Set();
+let state = false;
 let penyakit_diagnose = structuredClone(penyakit);
 
 Object.keys(gejala).forEach((x) =>
@@ -14,6 +15,13 @@ Object.keys(gejala).forEach((x) =>
 );
 
 $(document).ready(function () {
+    $('#toggle').click(function () {
+        state = $(this).is(':checked');
+
+        if (pilihan.size > 0)
+            display_diagnose(penyakit_diagnose, Array.from(pilihan));
+    });
+
     $('#gejala').select2({
         placeholder: 'Gejala yang Dialami',
         maximumSelectionLength: max_symp.length,
@@ -54,7 +62,6 @@ $(document).ready(function () {
         diagnose_symptoms(e.params.args.data.id, false);
     }).trigger('change');
 
-
     document.getElementsByClassName('select2-search__field')[0].onkeydown = function (e) {
         if (/[^a-zA-Z ]/.test(e.key))
             e.preventDefault();
@@ -69,12 +76,12 @@ function diagnose_symptoms(key, cond) {
     else {
         pilihan.delete(key);
 
-        if(pilihan.size == 1)
+        if (pilihan.size == 0)
             penyakit_diagnose = structuredClone(penyakit);
     }
 
     if (pilihan.size > 0)
-        display_diagnose(penyakit_diagnose, pilihan);
+        display_diagnose(penyakit_diagnose, Array.from(pilihan));
     else
         tbody.innerHTML = result.innerHTML = '';
 }
@@ -111,7 +118,7 @@ function compare(list_penyakit, penyakit, list_gejala, prob) {
 
     let res = ((count / list_penyakit[penyakit]['gejala'].length) * 100).toFixed(2);
 
-    list_penyakit[penyakit]['prob'] = res;
+    list_penyakit[penyakit]['prob'] = res * (state ? list_gejala.every((x) => list_penyakit[penyakit]['gejala'].includes(+x)) : true);
 
     if (res - prob[0] > 0) {
         prob[0] = res;
