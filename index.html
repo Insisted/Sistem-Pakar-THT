@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar THT</title>
+
+    <link rel="icon" type="images/svg" href="./tht.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="images/svg" href="./tht-light.svg" media="(prefers-color-scheme: dark)" />
+    <link href="./assets/select2-4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="./assets/style.css" rel="stylesheet" />
+
+    <script src="./assets/jquery-3.6.4.min.js"></script>
+    <script src="./assets/select2-4.0.13/dist/js/select2.min.js"></script>
+    <script src="./assets/sorttable.js"></script>
+    <script src="./assets/data/json.js"></script>
+</head>
+
+<body>
+    <div id="image">
+        <img src="./images/manager.svg" />
+        <h1>PAKAR THT</h1>
+    </div>
+
+    <div id="analysed">
+        <table id="list-analysed" class="sortable">
+            <caption>
+                <div>
+                <img src="./images/diagnose.svg" />
+                <span>Kemungkinan Penyakit</span>
+                <img src="./images/diagnose.svg" /></div>
+            </caption>
+            <thead id="header">
+                <th>Nama Penyakit</th>
+                <th>Gejala</th>
+                <th class="center">Kemungkinan (%)</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="tips">Tips: Klik header table untuk menyortir</div>
+
+    <div id="symptoms">
+        <div id="selection"></div>
+        <select id="gejala" multiple='multiple'></select>
+        <div id="note">
+            Disclaimer: Jangan memencet backspace kalau tidak ada yang lagi ingin dicari
+        </div>
+        <div id="result"></div>
+    </div>
+
+</body>
+<script src="./assets/script.js"></script>
+
+</html>

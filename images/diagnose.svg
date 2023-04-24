@@ -1,0 +1,17 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="1024" height="1024">
+	<title>diagnose-svg</title>
+	<style>
+		.s0 { fill: #ffffff;stroke: #2ca9bc;stroke-width: 2 } 
+		.s1 { fill: #2ca9bc } 
+	</style>
+	<g id="Folder 1">
+		<path id="Layer copy 2" fill-rule="evenodd" class="s0" d="m25.1 26.2c0 0.8-0.3 1.5-0.8 2-0.5 0.5-1.2 0.8-2 0.8-3.1 0-9.5 0-12.6 0-0.8 0-1.5-0.3-2-0.8-0.5-0.5-0.8-1.2-0.8-2v-20.4c0-0.8 0.3-1.5 0.8-2 0.5-0.5 1.2-0.8 2-0.8 3.1 0 9.5 0 12.6 0 0.8 0 1.5 0.3 2 0.8 0.5 0.5 0.8 1.2 0.8 2z"/>
+		<path id="Layer" fill-rule="evenodd" class="s1" d="m15 8h-1c-0.6 0-1 0.4-1 1 0 0.6 0.4 1 1 1h1v1c0 0.6 0.5 1 1 1 0.6 0 1-0.4 1-1v-1h1c0.5 0 1-0.4 1-1 0-0.6-0.5-1-1-1h-1v-1c0-0.6-0.5-1-1-1-0.6 0-1 0.5-1 1z"/>
+		<path id="Layer" fill-rule="evenodd" class="s1" d="m15 17h6c0.6 0 1-0.4 1-1 0-0.6-0.4-1-1-1h-6c-0.6 0-1 0.4-1 1 0 0.6 0.4 1 1 1z"/>
+		<path id="Layer" fill-rule="evenodd" class="s1" d="m15 21h6c0.6 0 1-0.4 1-1 0-0.6-0.4-1-1-1h-6c-0.6 0-1 0.4-1 1 0 0.6 0.4 1 1 1z"/>
+		<path id="Layer" fill-rule="evenodd" class="s1" d="m15 25h6c0.6 0 1-0.5 1-1 0-0.6-0.4-1-1-1h-6c-0.6 0-1 0.4-1 1 0 0.5 0.4 1 1 1z"/>
+		<path id="Layer" class="s1" d="m11 17c-0.6 0-1-0.5-1-1 0-0.6 0.4-1 1-1 0.6 0 1 0.4 1 1 0 0.5-0.4 1-1 1z"/>
+		<path id="Layer" class="s1" d="m11 21c-0.6 0-1-0.5-1-1 0-0.6 0.4-1 1-1 0.6 0 1 0.4 1 1 0 0.5-0.4 1-1 1z"/>
+		<path id="Layer" class="s1" d="m11 25c-0.6 0-1-0.5-1-1 0-0.6 0.4-1 1-1 0.6 0 1 0.4 1 1 0 0.5-0.4 1-1 1z"/>
+	</g>
+</svg>

@@ -1,0 +1,42 @@
+#analysed {
+    width: min(900px, 100% - 3rem);
+    height: 500px;
+    margin: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#analysed>div {
+    position: relative;
+    height: 100%;
+    padding-top: 20px;
+}
+
+#analysed>div>div {
+    max-height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#list-analysed {
+    width: 100%;
+    height: 500px;
+    background-color: #323232;
+    border-collapse: collapse;
+    border-radius: 0 0 1rem 1rem;
+}
+
+#analysed>div>div>table>*>tr>* {
+    padding: 0;
+}
+
+caption {
+    position: absolute;
+    top: -20px;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,141 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    padding: 2em;
+    background: #575757;
+    font-family: sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+caption div img {
+    max-height: 100%;
+}
+
+caption div span {
+    font-weight: 1000;
+    display: inline-block;
+}
+
+caption div {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+caption,
+th,
+td {
+    padding: 1rem;
+}
+
+li[aria-selected='true'] {
+    color: black;
+}
+
+th {
+    background: hsl(0 0% 0% / 0.5);
+}
+
+tr:nth-child(even) {
+    background: hsl(0 0% 0% / 0.1);
+}
+
+.center {
+    text-align: center;
+    width: 20%;
+}
+
+.select2-dropdown {
+    border-radius: 0 0 1rem 1rem;
+}
+
+.select2-results__option {
+    background-color: #323232;
+}
+
+.select2-selection__choice {
+    display: none;
+}
+
+.selected-list {
+    list-style: none;
+    background-color: #353535;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.unselect-list {
+    color: #999;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 2px;
+}
+
+#analysed {
+    border-radius: 0 0 1rem 1rem;
+    height: 500px;
+}
+
+#analysed,
+#symptoms,
+#tips,
+#image {
+    width: min(900px, 100% - 3rem);
+    margin: auto;
+    overflow-y: auto;
+}
+
+#gejala {
+    width: 100%;
+}
+
+#image img {
+    width: 10%;
+}
+
+#image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#list-analysed {
+    width: 100%;
+    height: 90%;
+    background-color: #323232;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#note {
+    padding-top: 10px;
+}
+
+#result h4 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#selection ul {
+    list-style: none;
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+#symptoms {
+    height: 300px;
+}
+
+#tips {
+    padding-top: 10px;
+}
