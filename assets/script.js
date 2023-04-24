@@ -48,7 +48,6 @@ $(document).ready(function () {
         $('a').on('click', function (e) {
             diagnose_symptoms($(this).attr('value'), false);
         });
-
     }).on('select2:selecting', function (e) {
         diagnose_symptoms(e.params.args.data.id, true);
     }).on('select2:unselecting', function (e) {
@@ -67,12 +66,11 @@ function diagnose_symptoms(key, cond) {
     if (cond && /^\d+/.test(key)) {
         pilihan.add(key);
     }
-    else if (!cond && pilihan.size == 1) {
-        pilihan.delete(key);
-        penyakit_diagnose = structuredClone(penyakit);
-    }
     else {
         pilihan.delete(key);
+
+        if(pilihan.size == 1)
+            penyakit_diagnose = structuredClone(penyakit);
     }
 
     if (pilihan.size > 0)
