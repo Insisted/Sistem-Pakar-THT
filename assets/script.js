@@ -35,7 +35,7 @@ $(document).ready(function () {
 
             li.children('a.unselect-list').off('click.select2-copy').on('click.select2-copy', function (e) {
                 let $opt = $(this).data('select2-opt');
-                
+
                 $opt.prop('selected', false);
                 $opt.parents('select').trigger('change');
             }).data('select2-opt', $(v));
@@ -66,12 +66,6 @@ function diagnose_symptoms(key, cond) {
 
     if (cond && /^\d+/.test(key)) {
         pilihan.add(key);
-
-        pilihan.forEach((x) => {
-            for (const item in penyakit_diagnose)
-                if (!penyakit_diagnose[item].includes(+x))
-                    delete penyakit_diagnose[item];
-        });
     }
     else if (!cond && pilihan.size == 1) {
         pilihan.delete(key);
@@ -79,57 +73,50 @@ function diagnose_symptoms(key, cond) {
     }
     else {
         pilihan.delete(key);
-        list_pilihan = Array.from(pilihan);
-
-        pilihan.forEach((x) => {
-            for (const item in penyakit)
-                if (!penyakit_diagnose.hasOwnProperty(item) && check_contains(penyakit[item], list_pilihan))
-                    penyakit_diagnose[item] = penyakit[item];
-        });
     }
 
     if (pilihan.size > 0)
         display_diagnose(penyakit_diagnose, pilihan);
     else
-        tbody.innerHTML = '';
-}
-
-function check_contains(list_penyakit, list_gejala) {
-    for (let i = 0; i < list_gejala.length; i++)
-        if (!list_penyakit.includes(+list_gejala[i]))
-            return false;
-            
-    return true;
+        tbody.innerHTML = result.innerHTML = '';
 }
 
 function display_diagnose(list_penyakit, list_gejala) {
     tbody.innerHTML = '';
     result.innerHTML = '';
-    let matches = [];
+    let max_prob = [0, ''];
 
-    if (Object.keys(penyakit).length == 0)
-        return;
+    for (const item in list_penyakit) {
+        compare(list_penyakit, item, list_gejala, max_prob);
+    }
 
-    Object.keys(list_penyakit).forEach((x) =>
-        tbody.innerHTML += `<tr><td>${x}</td><td>${list_penyakit[x].join(', ')}</td><td class='center'>${compare(list_penyakit, x, list_gejala, matches).toFixed(2)}</td></tr>`
-    );
+    const sorted = Object.entries(list_penyakit).sort((x, y) => y[1]['prob'] - x[1]['prob']).filter((z) => +z[1]['prob'] > 0);
 
-    let title = matches.length > 0 ? 'Terdapat Match 100% dari Gejala yang Anda Alami:<br>' : 'Belum Menemukan Match 100% dari Gejala yang Diberikan';
+    sorted.forEach((x) => {
+        tbody.innerHTML += `<tr><td class="center">${x[0]}</td><td>${x[1]['gejala'].map((z) => gejala[z]).join(', ')}</td><td class='center'>${x[1]['prob']}</td></tr>`;
+    });
 
-    result.innerHTML = `<h4>${title}</h4>` + matches.map((x, i) => `${i + 1}. ${x}`).join('<br/>');
+    let matches = '<table><tr><td>' + sorted.filter((x) => x[1]['prob'] - max_prob[0] >= 0).map((x, i) => `${i + 1}. ${x[0]} (${x[1]['prob']} %)`).join('</td></tr><tr><td>') + '</td></tr></table>';
+
+    if (max_prob[0] == 100)
+        result.innerHTML = `<br><h4>Terdapat Match 100% dari Gejala yang Anda Alami:</h4>` + matches;
+    else
+        result.innerHTML = `<br><h4>Belum Menemukan Match 100% dari Gejala yang Diberikan, Namun Berikut Diagnosa dengan Kemungkinan Tertinggi:</h4>` + matches;
 }
 
-function compare(list_penyakit, penyakit, list_gejala, matches) {
+function compare(list_penyakit, penyakit, list_gejala, prob) {
     count = 0;
 
     list_gejala.forEach((x) => {
-        count += list_penyakit[penyakit].includes(+x);
+        count += list_penyakit[penyakit]['gejala'].includes(+x);
     });
 
-    let res = (count / list_penyakit[penyakit].length) * 100;
+    let res = ((count / list_penyakit[penyakit]['gejala'].length) * 100).toFixed(2);
 
-    if (res == 100)
-        matches.push(penyakit);
+    list_penyakit[penyakit]['prob'] = res;
 
-    return res;
+    if (res - prob[0] > 0) {
+        prob[0] = res;
+        prob[1] = penyakit;
+    }
 }

@@ -10,7 +10,10 @@ def get_data(excel_file=None):
     data = {}
 
     data['Penyakit'] = {
-        key.title(): [int(i) for i in val.split()] for key, val in list(
+        key.title(): {
+            'gejala': [int(i) for i in val.split()],
+            'prob': 0
+        } for key, val in list(
             wb['Penyakit'].iter_rows(values_only=True)
         )[1:]
     }

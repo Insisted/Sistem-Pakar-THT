@@ -30,6 +30,7 @@ caption,
 th,
 td {
     padding: 1rem;
+    width: 100%;
 }
 
 li[aria-selected='true'] {
@@ -122,8 +123,21 @@ tr:nth-child(even) {
 }
 
 #result h4 {
-    padding-bottom: 0;
     margin-bottom: 0;
+}
+
+#result table tr td {
+    padding: 0.5rem;
+}
+
+#result table tr:nth-child(odd) {
+    background: hsl(0 0% 0% / 0.2);
+}
+
+#result table {
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 #selection ul {
