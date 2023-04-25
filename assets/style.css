@@ -147,7 +147,7 @@ tr:nth-child(even) {
 }
 
 #symptoms {
-    height: 300px;
+    min-height: 300px;
 }
 
 #tips {

@@ -103,24 +103,26 @@ function display_diagnose(list_penyakit, list_gejala) {
 
     let matches = '<table><tr><td>' + sorted.filter((x) => x[1]['prob'] - max_prob[0] >= 0).map((x, i) => `${i + 1}. ${x[0]} (${x[1]['prob']} %)`).join('</td></tr><tr><td>') + '</td></tr></table>';
 
-    if (max_prob[0] == 100)
+    if(sorted.length == 0)
+        result.innerHTML = `<br><h4>Kemungkinan Penyakit Tidak Terdapat Dalam Database</h4>`;
+    else if (max_prob[0] == 100)
         result.innerHTML = `<br><h4>Terdapat Match 100% dari Gejala yang Anda Alami:</h4>` + matches;
     else
-        result.innerHTML = `<br><h4>Belum Menemukan Match 100% dari Gejala yang Diberikan, Namun Berikut Diagnosa dengan Kemungkinan Tertinggi:</h4>` + matches;
+        result.innerHTML = `<br><h4>Belum Menemukan Match 100% dari Gejala yang Diberikan, Namun Berikut Diagnosa dengan Kemungkinan Tertinggi:</h4>` + matches;        
 }
 
 function compare(list_penyakit, penyakit, list_gejala, prob) {
-    count = 0;
+    let count = 0;
 
     list_gejala.forEach((x) => {
-        count += list_penyakit[penyakit]['gejala'].includes(+x);
+        count += list_penyakit[penyakit]['gejala'].includes(x);
     });
 
     let res = ((count / list_penyakit[penyakit]['gejala'].length) * 100).toFixed(2);
 
-    list_penyakit[penyakit]['prob'] = res * (state ? list_gejala.every((x) => list_penyakit[penyakit]['gejala'].includes(+x)) : true);
+    list_penyakit[penyakit]['prob'] = res * (state ? list_gejala.every((x) => list_penyakit[penyakit]['gejala'].includes(x)) : true);
 
-    if (res - prob[0] > 0) {
+    if (list_penyakit[penyakit]['prob'] - prob[0] > 0) {
         prob[0] = res;
         prob[1] = penyakit;
     }
