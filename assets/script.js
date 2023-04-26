@@ -106,7 +106,7 @@ function display_diagnose(list_penyakit, list_gejala) {
     const sorted = Object.entries(list_penyakit).sort((x, y) => y[1]['prob'] - x[1]['prob']).filter((z) => +z[1]['prob'] > 0);
 
     sorted.forEach((x) => {
-        tbody.innerHTML += `<tr><td class="center">${x[0]}</td><td>${x[1]['gejala'].map((z) => gejala[z]).join(', ')}</td><td class='center'>${x[1]['prob']}</td></tr>`;
+        tbody.innerHTML += `<tr><td class='center'>${x[0]}</td><td>${x[1]['gejala'].map((z) => gejala[z]).join(', ')}</td><td class='center'>${x[1]['prob']}</td></tr>`;
     });
 
     let matches = '<table><tr><td>' + sorted.filter((x) => x[1]['prob'] - max_prob[0] >= 0).map((x, i) => `${i + 1}. ${x[0]} (${x[1]['prob']} %)`).join('</td></tr><tr><td>') + '</td></tr></table>';

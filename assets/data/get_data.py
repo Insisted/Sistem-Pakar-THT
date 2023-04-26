@@ -22,7 +22,12 @@ def get_data(excel_file=None):
             wb['Gejala'].iter_rows(values_only=True)
         )[1:]
     }
-    data['max_symptoms'] = max(map(lambda x: x['gejala'], data['Penyakit'].values()), key=len)
+    data['max_symptoms'] = max(
+        map(
+            lambda x: x['gejala'], data['Penyakit'].values()
+        ),
+        key=len
+    )
 
     return data
 

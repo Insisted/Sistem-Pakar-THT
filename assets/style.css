@@ -26,10 +26,8 @@ caption div {
     justify-content: center;
 }
 
-caption,
-th,
-td {
-    padding: 1rem;
+caption {
+    padding: 1rem 0 1rem 0;
     width: 100%;
 }
 
@@ -40,6 +38,12 @@ li[aria-selected='true'] {
 th {
     background: hsl(0 0% 0% / 0.5);
     cursor: pointer;
+}
+
+th,
+td {
+    padding: 1rem;
+    width: 100%;
 }
 
 tr:nth-child(even) {
