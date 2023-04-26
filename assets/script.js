@@ -31,7 +31,10 @@ $(document).ready(function () {
     });
 
     $('#gejala').select2({
-        placeholder: 'Gejala yang Dialami',
+        placeholder: {
+            id: "0",
+            text: 'Gejala yang Dialami'
+        },
         maximumSelectionLength: state ? max_symp.length : undefined,
         tags: true,
         language: {
