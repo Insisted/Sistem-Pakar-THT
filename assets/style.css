@@ -56,7 +56,8 @@ tr:nth-child(even) {
 }
 
 .select2-dropdown {
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    overflow: hidden;
 }
 
 .select2-results__option {
