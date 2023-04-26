@@ -18,13 +18,21 @@ $(document).ready(function () {
     $('#toggle').click(function () {
         state = $(this).is(':checked');
 
+        $('#gejala').select2({ maximumSelectionLength: state ? max_symp.length : undefined });
+
+        if (state)
+            for (let i of Array.from(pilihan).slice(10,)) {
+                pilihan.delete(i);
+                $(`a[value=${i}]`).click();
+            }
+
         if (pilihan.size > 0)
             display_diagnose(penyakit_diagnose, Array.from(pilihan));
     });
 
     $('#gejala').select2({
         placeholder: 'Gejala yang Dialami',
-        maximumSelectionLength: max_symp.length,
+        maximumSelectionLength: state ? max_symp.length : undefined,
         tags: true,
         language: {
             maximumSelected: function () {
@@ -103,12 +111,12 @@ function display_diagnose(list_penyakit, list_gejala) {
 
     let matches = '<table><tr><td>' + sorted.filter((x) => x[1]['prob'] - max_prob[0] >= 0).map((x, i) => `${i + 1}. ${x[0]} (${x[1]['prob']} %)`).join('</td></tr><tr><td>') + '</td></tr></table>';
 
-    if(sorted.length == 0)
+    if (sorted.length == 0)
         result.innerHTML = `<br><h4>Kemungkinan Penyakit Tidak Terdapat Dalam Database</h4>`;
     else if (max_prob[0] == 100)
         result.innerHTML = `<br><h4>Terdapat Match 100% dari Gejala yang Anda Alami:</h4>` + matches;
     else
-        result.innerHTML = `<br><h4>Belum Menemukan Match 100% dari Gejala yang Diberikan, Namun Berikut Diagnosa dengan Kemungkinan Tertinggi:</h4>` + matches;        
+        result.innerHTML = `<br><h4>Belum Menemukan Match 100% dari Gejala yang Diberikan, Namun Berikut Diagnosa dengan Kemungkinan Tertinggi:</h4>` + matches;
 }
 
 function compare(list_penyakit, penyakit, list_gejala, prob) {
