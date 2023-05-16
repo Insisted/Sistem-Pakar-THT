@@ -12,10 +12,10 @@
     <link href="./assets/select2-4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <link href="./assets/style.css" rel="stylesheet" />
 
-    <script src="./assets/jquery-3.6.4.min.js"></script>
-    <script src="./assets/select2-4.0.13/dist/js/select2.min.js"></script>
-    <script src="./assets/sorttable.js"></script>
-    <script src="./assets/data/json.js"></script>
+    <script src="./assets/jquery-3.6.4.min.js" defer></script>
+    <script src="./assets/select2-4.0.13/dist/js/select2.min.js" defer></script>
+    <script src="./assets/data/json.js" defer></script>
+    <script src="./assets/script.js" defer></script>
 </head>
 
 <body>
@@ -25,31 +25,34 @@
     </div>
 
     <div id="analysed">
-        <table id="list-analysed" class="sortable">
+        <table id="list-analysed">
             <caption>
                 <div>
-                <img src="./images/diagnose.svg" />
-                <span>Kemungkinan Penyakit</span>
-                <img src="./images/diagnose.svg" /></div>
+                    <img src="./images/diagnose.svg" />
+                    <span>Kemungkinan Penyakit</span>
+                    <img src="./images/diagnose.svg" />
+                </div>
             </caption>
-            <thead id="header">
-                <th class="center">Nama Penyakit</th>
-                <th>Gejala</th>
-                <th class="center">Kemungkinan (%)</th>
+            <thead>
+                <tr id="tr_th">
+                    <th class="center" id="penyakit_th">Nama Penyakit<span></span></th>
+                    <th id="gejala_th">Gejala<span></span></th>
+                    <th class="center" id="prob_th">Kemungkinan (%)<span></span></th>
+                </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
 
             </tbody>
         </table>
     </div>
     <div id="tips">
         Tips: Klik header table untuk menyortir
-        <input id="toggle" type="checkbox" alt="Aktifkan untuk mencari true matches" title="Aktifkan untuk mencari true matches">
+        <input id="toggle" type="checkbox" alt="Aktifkan untuk mencari true matches" title="Aktifkan untuk mencari true matches" />
     </div>
 
     <div id="symptoms">
         <div id="selection"></div>
-        <select id="gejala" multiple='multiple'></select>
+        <select id="gejala" multiple="multiple"></select>
         <div id="note">
             Disclaimer: Jangan memencet backspace kalau tidak ada yang lagi ingin dicari
         </div>
@@ -57,6 +60,5 @@
     </div>
 
 </body>
-<script src="./assets/script.js"></script>
 
 </html>
